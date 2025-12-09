@@ -1,0 +1,25 @@
+# Rust build artifacts
+target/
+
+# Cargo lock file (for library projects)
+Cargo.lock
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Windows specific files
+*.exe
+*.dll
+*.lib
+*.pdb
+
+# macOS specific files
+.DS_Store
+
+# Autohotkey temporary files
+*.ahk.ahk
+*.bak
