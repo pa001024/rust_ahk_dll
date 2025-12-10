@@ -23,3 +23,5 @@ Cargo.lock
 # Autohotkey temporary files
 *.ahk.ahk
 *.bak
+*.exp
+*.obj

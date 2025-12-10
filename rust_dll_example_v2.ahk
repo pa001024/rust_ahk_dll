@@ -121,6 +121,16 @@ println("测试Unicode字符串拼接: `"" unicodeStr1 "`" + `"" unicodeStr2 "`"
 ; 释放Unicode字符串内存
 DllCall(dll "\free_string_unicode", "Ptr", unicodeResultPtr)
 
+
+println("测试设置程序音量: setProgramVolume(`"EM-Win64-Shipping.exe`", 0.0)")
+rst := DllCall(dll "\setProgramVolume", "str", "EM-Win64-Shipping.exe", "float", 0.0, "int")
+println("setProgramVolume返回值: " rst)
+Sleep 2000
+
+println("测试设置程序音量: setProgramVolume(`"EM-Win64-Shipping.exe`", 1.0)")
+rst := DllCall(dll "\setProgramVolume", "str", "EM-Win64-Shipping.exe", "float", 1.0, "int")
+println("setProgramVolume返回值: " rst)
+
 ; 总结：
 ; 1. 基本类型（Int, Double等）可以直接传递和返回
 ; 2. 字符串需要使用AStr类型，并注意释放内存

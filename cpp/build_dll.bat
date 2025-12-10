@@ -1,0 +1,30 @@
+@echo off
+
+rem Set up Visual Studio environment using the provided path
+call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+
+rem Create output directory
+mkdir bin 2>nul
+set OBJ_DIR=obj
+set BIN_DIR=bin
+set SRC_FILE="setvol_dll.cpp" 
+
+if not exist %OBJ_DIR% md %OBJ_DIR%
+if not exist %BIN_DIR% md %BIN_DIR%
+
+rem Compile DLL
+cl /W4 /EHsc /utf-8 /LD %SRC_FILE% ^
+    /link /out:"%BIN_DIR%\setvol_dll.dll"
+@REM    /Fo"%OBJ_DIR%\" ^
+@REM    /Fe"%BIN_DIR%\setvol_dll.dll"
+
+rem Check compilation result
+if %ERRORLEVEL% == 0 (
+    echo Compilation successful! DLL generated in bin directory
+    echo Generated files:
+    dir bin\setvol_dll.* /B
+    dumpbin /exports bin\setvol_dll.dll
+) else (
+    echo Compilation failed!
+    exit /b 1
+)
